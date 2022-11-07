@@ -1,34 +1,40 @@
 package com.domain;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class TaxableIncome {
-    //@NotNull(message = "Select a category")
+    @NotNull(message = "Select a category")
     private String category_select;
     private Long id;
-    //@Size(min = 5, max = 20, message = "The Name '${validatedValue}' must be between {min} and {max} characters long")
+    @Size(min = 5, max = 20, message = "The Name '${validatedValue}' must be between {min} and {max} characters long")
+    @NotNull(message = "Input the name")
     private String name;
+    @Min(value = 1000, message = "Minimum Salary is {value}")
     @NotNull(message = "Input the salary")
     private double basic_salary;
+
     private double basic_salary_exemption;
+
     private double basic_salary_taxable;
 
-    //@NotNull(message = "Input the houserent")
+    @NotNull(message = "Input the houserent")
     private double houserent;
     private double houserent_exemption;
     private double houserent_taxable;
-    //@NotNull(message = "Input medical allowance")
+
+    @NotNull(message = "Input medical allowance")
     private double medical;
     private double medical_exemption;
     private double medical_taxable;
+    @NotNull
     private double conveyance;
     private double conveyance_exemption;
     private double conveyance_taxable;
+    @NotNull
     private double commission;
     private double commission_exemption;
     private double commission_taxable;
+    @NotNull
     private double bonus;
     private double bonus_exemption;
     private double bonus_taxable;

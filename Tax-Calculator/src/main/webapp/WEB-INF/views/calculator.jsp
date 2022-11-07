@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Tax Calculator</title>
 </head>
 <body>
 

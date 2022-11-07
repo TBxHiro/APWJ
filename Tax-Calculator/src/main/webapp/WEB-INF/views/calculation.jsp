@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
     <%@include file="/WEB-INF/css/style.css" %>
@@ -18,8 +18,11 @@
     <title>Title</title>
 </head>
 <body>
-<p>Tax Payer Category: ${taxable.category_select}</p>
-<br><br>
+<p>Name: ${taxable.name}
+    <br>
+    Tax Payer Category: ${taxable.category_select}
+</p>
+<p a>Taxable Income Calculation:</p>
 <table>
     <tr>
         <th>Area</th>
@@ -69,6 +72,52 @@
         <td>-</td>
         <th id="total_taxable">${taxable.totalTaxable}</th>
     </tr>
+    <tr>
+        <th>Gross Tax Liability</th>
+        <td>-</td>
+        <td>-</td>
+        <th id="gross_tax">${taxable.grossTax}</th>
+    </tr>
+</table>
+
+<br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tax Category</th>
+        <th>Salary</th>
+        <th>House Rent</th>
+        <th>Medical</th>
+        <th>Conveyance</th>
+        <th>OT</th>
+        <th>Commission</th>
+        <th>Bonus</th>
+        <th>Taxable Amount</th>
+        <th>Gross Tax</th>
+    </tr>
+    <c:forEach items="${taxHistory}" var="tax">
+        <tr>
+                <%--        <c:url var="updateLink" value="/tax/edit">--%>
+                <%--            <c:param name="id" value="${tax.id}" />--%>
+                <%--        </c:url>--%>
+                <%--        <c:url var="deleteLink" value="/tax/delete">--%>
+                <%--            <c:param name="id" value="${tax.id}" />--%>
+                <%--        </c:url>--%>
+            <td>${tax.id}</td>
+            <td>${tax.category_select}</td>
+            <td>${tax.name}</td>
+            <td>${tax.basic_salary}</td>
+            <td>${tax.houserent}</td>
+            <td>${tax.medical}</td>
+            <td>${tax.conveyance}</td>
+            <td>${tax.commission}</td>
+            <td>${tax.bonus}</td>
+            <td>${tax.totalTaxable}</td>
+            <td>${tax.grossTax}</td>
+
+                <%--        <td><a href="${updateLink}">Update</a> | <a href="${deleteLink}">Delete</a></td>--%>
+        </tr>
+    </c:forEach>
 </table>
 </body>
 </html>
